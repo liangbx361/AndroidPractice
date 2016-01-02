@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SplashTheme">
+        <!-- 可以根据需要设置自己的启动页 -->
+        <item name="android:windowBackground">@color/colorAccent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
 </resources>
