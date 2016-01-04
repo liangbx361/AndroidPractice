@@ -27,4 +27,11 @@ dependencies {
     compile libs.retrofit
     compile libs.retrofitAdapterRxJava
     compile libs.retrofitConverterGson
+    compile libs.rxAndroid
+    compile libs.okHttpLog
+    compile libs.okHttp
+
+    compile 'com.orhanobut:logger:1.11'
+
+    testCompile 'junit:junit:4.12'
 }

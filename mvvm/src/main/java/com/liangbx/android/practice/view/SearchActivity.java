@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.jakewharton.rxbinding.widget.RxTextView;
 import com.liangbx.android.practice.App;
@@ -35,8 +36,7 @@ public class SearchActivity extends AppCompatActivity {
         RxTextView.textChanges(mSearchViewModel.etKeyword)
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .debounce(300, TimeUnit.MILLISECONDS)
-                .filter(charSequence -> charSequence.length() > 0)
-//                .switchMap(charSequence -> App.getApplication(SearchActivity.this).getGithubService().userFromUrl(charSequence.toString()))
+                .filter(keyword -> keyword.length() > 0)
                 .switchMap(charSequence -> {
                     System.out.println("=== " + charSequence);
                     return App.getApplication(SearchActivity.this).getGithubService().publicRepositories(charSequence.toString());
@@ -50,6 +50,8 @@ public class SearchActivity extends AppCompatActivity {
                         },
                         throwable -> {
                             throwable.printStackTrace();
+                            Toast.makeText(SearchActivity.this, "搜索失败，请重试", Toast.LENGTH_SHORT).show();
+
                         }
                 );
 //        .filter(new Func1<CharSequence, Boolean>() {

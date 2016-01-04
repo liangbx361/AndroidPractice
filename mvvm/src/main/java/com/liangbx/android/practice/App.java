@@ -3,7 +3,7 @@ package com.liangbx.android.practice;
 import android.app.Application;
 import android.content.Context;
 
-import com.liangbx.android.practice.data.network.GithubFactory;
+import com.liangbx.android.practice.data.network.NetworkFactory;
 import com.liangbx.android.practice.data.network.GithubService;
 
 /**
@@ -30,7 +30,7 @@ public class App extends Application{
 
     public GithubService getGithubService() {
         if(mGithubService == null) {
-            mGithubService = GithubFactory.create();
+            mGithubService = NetworkFactory.create();
         }
         return mGithubService;
     }
