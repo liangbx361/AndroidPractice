@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidPractice</string>
+
+    <string name="hint_search_keyword">请输入关键字</string>
 </resources>

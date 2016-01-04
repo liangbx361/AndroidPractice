@@ -19,8 +19,11 @@ ext {
     rxAndroidVersion = '0.25.0'
     javaxAnnotationVersion = '1.0'
     gsonVersion = '2.3'
+    jacksonVersion = '2.6.0'
     okHttpVersion = '2.5.0'
     androidAnnotationsVersion = '20.0.0'
+    rxbindingVersion = '0.3.0'
+    retrofitVersion = '2.0.0-beta2'
 
     //Testing
     robolectricVersion = '3.0'
@@ -32,13 +35,25 @@ ext {
     testingSupportLibVersion = '0.1'
 
     libs = [
-            daggerCompiler : "com.google.dagger:dagger-compiler:${daggerVersion}",
-            dagger         : "com.google.dagger:dagger:${daggerVersion}",
-            butterKnife    : "com.jakewharton:butterknife:${butterKnifeVersion}",
-            recyclerView   : "com.android.support:recyclerview-v7:${recyclerViewVersion}",
-            rxJava         : "io.reactivex:rxjava:${rxJavaVersion}",
-            rxAndroid      : "io.reactivex:rxandroid:${rxAndroidVersion}",
-            javaxAnnotation: "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            daggerCompiler          : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger                  : "com.google.dagger:dagger:${daggerVersion}",
+            butterKnife             : "com.jakewharton:butterknife:${butterKnifeVersion}",
+            recyclerView            : "com.android.support:recyclerview-v7:${recyclerViewVersion}",
+            rxJava                  : "io.reactivex:rxjava:${rxJavaVersion}",
+            rxAndroid               : "io.reactivex:rxandroid:${rxAndroidVersion}",
+            javaxAnnotation         : "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            rxbinding               : "com.jakewharton.rxbinding:rxbinding:${rxbindingVersion}",
+
+            //net
+            okHttp                  : "com.squareup.okhttp:okhttp:${okHttpVersion}",
+            retrofit                : "com.squareup.retrofit:retrofit:${retrofitVersion}",
+            retrofitAdapterRxJava   : "com.squareup.retrofit:adapter-rxjava:${retrofitVersion}",
+            retrofitConverterJackson: "com.squareup.retrofit:converter-jackson:${retrofitVersion}",
+            retrofitConverterGson   : "com.squareup.retrofit:converter-gson:${retrofitVersion}",
+
+            //json
+            jacksonDatabind         : "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}",
+            gson                    : "com.google.code.gson:gson:${gsonVersion}",
     ]
 
     test = [
