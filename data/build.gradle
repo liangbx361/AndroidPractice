@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 23
@@ -16,17 +17,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.1.1'
 
+    def android = rootProject.ext.android
     def libs = rootProject.ext.libs
+    def test = rootProject.ext.test
+
+    compile android.annotations
+
 //    compile libs.okHttp
     compile libs.retrofit
     compile libs.retrofitAdapterRxJava
     compile libs.retrofitConverterGson
+    compile libs.rxJava
     compile libs.rxAndroid
     compile libs.okHttpLog
     compile libs.okHttp

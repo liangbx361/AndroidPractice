@@ -32,6 +32,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':base')
     compile project(':data')
 
     def android = rootProject.ext.android
@@ -40,24 +41,25 @@ dependencies {
 
     //依赖
     compile android.annotations
-    compile android.supportAppcompatV7
+    compile android.supportV4
 
     compile libs.rxJava
     compile libs.rxAndroid
     compile libs.rxbinding
+    compile libs.recyclerView
 
     //测试
     testCompile test.junit
-    testCompile test.assertj
-    testCompile test.mockito
-    testCompile test.robolectric
-
-    androidTestCompile test.espresso
-    androidTestCompile test.espressoContrib
-    androidTestCompile test.espressoWeb
-    androidTestCompile test.espressoIdlingResource
-    androidTestCompile test.testRunner
-    androidTestCompile test.testRules
-    androidTestCompile rootProject.ext.android.annotations
+//    testCompile test.assertj
+//    testCompile test.mockito
+//    testCompile test.robolectric
+//
+//    androidTestCompile test.espresso
+//    androidTestCompile test.espressoContrib
+//    androidTestCompile test.espressoWeb
+//    androidTestCompile test.espressoIdlingResource
+//    androidTestCompile test.testRunner
+//    androidTestCompile test.testRules
+//    androidTestCompile android.annotations
 
 }

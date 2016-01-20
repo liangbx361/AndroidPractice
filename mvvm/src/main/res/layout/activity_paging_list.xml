@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data class="PagingListViewModel">
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/refresh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </android.support.v4.widget.SwipeRefreshLayout>
+
+            <include
+                android:id="@+id/load_fail_and_retry"
+                layout="@layout/common_load_fail_and_retry"/>
+
+            <include
+                android:id="@+id/content_empty"
+                layout="@layout/common_content_empty"/>
+
+            <include
+                android:id="@+id/loading"
+                layout="@layout/common_loading"/>
+
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>
