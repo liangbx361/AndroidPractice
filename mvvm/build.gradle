@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
+apply from: "${rootDir}/buildconfig/retrolambda.gradle"
 
 android {
     compileSdkVersion 23
@@ -28,12 +28,17 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':base')
     compile project(':data')
+    compile project(':common')
 
     def android = rootProject.ext.android
     def libs = rootProject.ext.libs

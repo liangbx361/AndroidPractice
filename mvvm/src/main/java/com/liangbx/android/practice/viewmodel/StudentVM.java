@@ -4,7 +4,7 @@ package com.liangbx.android.practice.viewmodel;
  * Author liangbx
  * Date 2016/1/16
  */
-public class StudentVM extends CommonVM {
+public class StudentVM  {
 
     private String name;
 
