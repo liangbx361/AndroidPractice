@@ -10,9 +10,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.liangbx.android.practice.R;
+import com.liangbx.android.practice.log.Logger;
 
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 
 import rx.Observable;
 import rx.Subscription;
@@ -140,7 +140,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
         public void surfaceCreated(SurfaceHolder holder) {
             if (position > 0 && path != null) {
                 play(position);
-                Logger.(this, "surfaceCreated --> position " + position);
+                Logger.debug(this, "surfaceCreated --> position " + position);
                 position = 0;
             }
         }
@@ -156,12 +156,12 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
                 position = mMediaPlayer.getCurrentPosition();
                 mMediaPlayer.stop();
 
-                LogUtil.d(this, "surfaceDestroyed --> position " + position);
+                com.liangbx.android.practice.log.Logger.debug(this, "surfaceDestroyed --> position " + position);
             } else if(pause) {
                 //暂停状态
                 position = mMediaPlayer.getCurrentPosition();
                 mMediaPlayer.stop();
-                LogUtil.d(this, "surfaceDestroyed --> pause " + position);
+                Logger.debug(this, "surfaceDestroyed --> pause " + position);
             }
         }
     }
@@ -280,19 +280,19 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
             position = mMediaPlayer.getCurrentPosition();
         }
 
-        LogUtil.d(this, "onPause --> position " + position);
+        Logger.debug(this, "onPause --> position " + position);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        LogUtil.d(this, "onStop");
+        Logger.debug(this, "onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        LogUtil.d(this, "onDestroy");
+        Logger.debug(this, "onDestroy");
 
         if (mMediaPlayer != null) {
             mMediaPlayer.release();
@@ -311,7 +311,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
                     public Boolean call(Long time) {
                         boolean isPlaying = false;
 
-                        LogUtil.d(this, "interval time --> " + time);
+                        Logger.debug(this, "interval time --> " + time);
                         if (mediaPlayer != null) {
                             if(mMediaPlayer.isPlaying()) {
                                 long currentPosition = mediaPlayer.getCurrentPosition();
@@ -331,13 +331,13 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(isPlaying -> {
                     if (isPlaying) {
-                        LogUtil.d(this, "视频播放中...");
+                        Logger.debug(this, "视频播放中...");
                     } else {
-                        LogUtil.d(this, "视频缓冲中...");
+                        Logger.debug(this, "视频缓冲中...");
                     }
                 }, throwable -> {
                     throwable.printStackTrace();
-                    LogUtil.d(this, "视频播放监听失败...");
+                    Logger.debug(this, "视频播放监听失败...");
                 });
     }
 
@@ -353,7 +353,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
                     public Boolean call(Long time) {
                         boolean isPlaying = false;
 
-                        LogUtil.d(this, "interval time --> " + time);
+                        Logger.debug(this, "interval time --> " + time);
                         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
                             if(mMediaPlayer.isPlaying()) {
                                 long currentPosition = mediaPlayer.getCurrentPosition();
@@ -374,13 +374,13 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(isPlaying -> {
                     if (isPlaying) {
-                        LogUtil.d(this, "视频播放中...");
+                        Logger.debug(this, "视频播放中...");
                     } else {
-                        LogUtil.d(this, "视频加载中...");
+                        Logger.debug(this, "视频加载中...");
                     }
                 }, throwable -> {
                     throwable.printStackTrace();
-                    LogUtil.d(this, "视频播放检测失败...");
+                    Logger.debug(this, "视频播放检测失败...");
                 });
     }
 }
