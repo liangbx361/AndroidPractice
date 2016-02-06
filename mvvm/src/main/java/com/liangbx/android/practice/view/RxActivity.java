@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.liangbx.android.practice.thread.MainThreadUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+import rx.observables.ConnectableObservable;
 import rx.schedulers.Schedulers;
 
 /**
@@ -33,6 +36,7 @@ public class RxActivity extends AppCompatActivity {
         rxJustSample();
         rxNeverSample();
         rxRepeatSample();
+        rxSchedulersSample();
     }
 
     private void rxSimpleSample() {
@@ -144,6 +148,51 @@ public class RxActivity extends AppCompatActivity {
                 .subscribe(count -> {
                     Log.d(TAG, "Repeat count:" + count);
                 });
+    }
+
+    private void rxSchedulersSample() {
+        Observable.just("")
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .doOnNext(s -> Log.d(TAG, "doOnNext 1 is main thread -->" + MainThreadUtil.isMainThread()))
+                .flatMap(s -> Observable.just(MainThreadUtil.isMainThread())
+                        .subscribeOn(Schedulers.io())
+                        .doOnNext(aBoolean -> Log.d(TAG, "doOnNext 1.1 is main thread -->" + MainThreadUtil.isMainThread())))
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .doOnNext(s -> {
+                    Log.d(TAG, "doOnNext 2 is main thread -->" + MainThreadUtil.isMainThread());
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(s -> {
+                    Log.d(TAG, "subscribe is main thread -->" + MainThreadUtil.isMainThread());
+                });
+
+
+    }
+
+    private void rxPublishSample() {
+        ConnectableObservable publish = Observable.just(null).publish();
+        publish.subscribeOn(Schedulers.io());
+//        publish.observeOn(AndroidSchedulers.io());
+        publish.connect();
+
+        publish.subscribe(new Action1() {
+            @Override
+            public void call(Object o) {
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+
+            }
+        });
+
+        publish.observeOn(Schedulers.io());
+        publish.subscribe(new Action1() {
+            @Override
+            public void call(Object o) {
+            }
+        }, Throwable::printStackTrace);
+
     }
 
     private String helloWorld(){
