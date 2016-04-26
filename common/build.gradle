@@ -20,6 +20,23 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
+
+    def android = rootProject.ext.android
+    def libs = rootProject.ext.libs
+    def test = rootProject.ext.test
+
+    //单元测试
+    testCompile test.junit
+    testCompile test.assertj
+    testCompile test.mockito
+    testCompile test.robolectric
+
+    //Android测试
+    androidTestCompile test.espresso
+    androidTestCompile test.espressoContrib
+    androidTestCompile test.espressoWeb
+    androidTestCompile test.espressoIdlingResource
+    androidTestCompile test.testRunner
+    androidTestCompile test.testRules
+    androidTestCompile android.annotations
 }

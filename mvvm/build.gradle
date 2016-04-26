@@ -44,27 +44,26 @@ dependencies {
     def libs = rootProject.ext.libs
     def test = rootProject.ext.test
 
-    //依赖
+    //依赖库
     compile android.annotations
-    compile android.supportV4
+    compile android.supportAppcompatV7
 
     compile libs.rxJava
     compile libs.rxAndroid
     compile libs.rxbinding
-    compile libs.recyclerView
 
-    //测试
+    //单元测试
     testCompile test.junit
-//    testCompile test.assertj
-//    testCompile test.mockito
-//    testCompile test.robolectric
-//
-//    androidTestCompile test.espresso
-//    androidTestCompile test.espressoContrib
-//    androidTestCompile test.espressoWeb
-//    androidTestCompile test.espressoIdlingResource
-//    androidTestCompile test.testRunner
-//    androidTestCompile test.testRules
-//    androidTestCompile android.annotations
+    testCompile test.assertj
+    testCompile test.mockito
+    testCompile test.robolectric
 
+    //Android测试
+    androidTestCompile test.espresso
+    androidTestCompile test.espressoContrib
+    androidTestCompile test.espressoWeb
+    androidTestCompile test.espressoIdlingResource
+    androidTestCompile test.testRunner
+    androidTestCompile test.testRules
+    androidTestCompile android.annotations
 }
