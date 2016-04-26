@@ -1,1 +1,1 @@
-include ':mvvm', ':base', ':data', ':common'
+include ':mvvm', ':base', ':data', ':common', ':common-state-view'

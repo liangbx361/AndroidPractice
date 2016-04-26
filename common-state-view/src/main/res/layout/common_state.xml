@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.liangbx.android.common.state.view.CommonStateView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</com.liangbx.android.common.state.view.CommonStateView>
