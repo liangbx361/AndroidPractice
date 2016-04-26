@@ -1,4 +1,4 @@
-package pattern;
+package com.liangbx.android.practice.base.pattern;
 
 /**
  * Author liangbx

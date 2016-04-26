@@ -1,7 +1,10 @@
-package model;
+package com.liangbx.android.practice.base.model;
 
 import android.app.Activity;
 import android.content.Context;
+
+import com.liangbx.android.practice.base.empty.EmptyActivity;
+import com.liangbx.android.practice.base.empty.EmptyContext;
 
 import java.lang.ref.WeakReference;
 
@@ -12,8 +15,8 @@ import java.lang.ref.WeakReference;
 public class ActivityDelegate {
 
     private WeakReference<Activity> mActivityRef;
-    private NullContext mNullContext;
-    private NullActivity mNullActivity;
+    private EmptyContext mNullContext;
+    private EmptyActivity mNullActivity;
 
     public ActivityDelegate(Activity activity) {
         mActivityRef = new WeakReference<>(activity);
@@ -37,14 +40,14 @@ public class ActivityDelegate {
 
     private Context getNullContext() {
         if(mNullContext == null) {
-            mNullContext = new NullContext();
+            mNullContext = new EmptyContext();
         }
         return mNullContext;
     }
 
     private Activity getNullActivity() {
         if(mNullActivity == null) {
-            mNullActivity = new NullActivity();
+            mNullActivity = new EmptyActivity();
         }
         return mNullActivity;
     }

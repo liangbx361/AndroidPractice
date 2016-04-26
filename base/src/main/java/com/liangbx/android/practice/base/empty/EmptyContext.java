@@ -1,4 +1,4 @@
-package model;
+package com.liangbx.android.practice.base.empty;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -37,7 +37,7 @@ import java.io.InputStream;
  * Author liangbx
  * Date 2016/2/1.
  */
-public class NullContext extends Context {
+public class EmptyContext extends Context {
 
     @Override
     public AssetManager getAssets() {
