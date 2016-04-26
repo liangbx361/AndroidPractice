@@ -1,6 +1,7 @@
 package com.liangbx.android.common.state.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,10 +33,30 @@ public class CommonStateView extends FrameLayout {
 
     public CommonStateView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        parseAttr(context, attrs);
     }
 
     public CommonStateView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        parseAttr(context, attrs);
+    }
+
+    private void parseAttr(Context context, AttributeSet attrs) {
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CommonState);
+        int emptyViewId = a.getResourceId(R.styleable.CommonState_empty_view, 0);
+        int loadingViewId = a.getResourceId(R.styleable.CommonState_loading_view, 0);
+        int loadFailViewId = a.getResourceId(R.styleable.CommonState_loadFail_view, 0);
+
+        if(emptyViewId > 0) {
+            addEmptyView(emptyViewId);
+        }
+        if(loadingViewId > 0) {
+            addLoadingView(loadingViewId);
+        }
+        if(loadFailViewId > 0) {
+            addLoadFailView(loadFailViewId);
+        }
+        a.recycle();
     }
 
     public void addEmptyView(View view) {
