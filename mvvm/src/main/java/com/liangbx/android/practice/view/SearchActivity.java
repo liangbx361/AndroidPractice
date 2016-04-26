@@ -1,20 +1,10 @@
 package com.liangbx.android.practice.view;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
-import com.jakewharton.rxbinding.widget.RxTextView;
-import com.liangbx.android.practice.App;
-import com.liangbx.android.practice.R;
 import com.liangbx.android.practice.databinding.SearchViewModel;
-
-import java.util.concurrent.TimeUnit;
-
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Author liangbx
@@ -28,32 +18,32 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mSearchViewModel = DataBindingUtil.setContentView(this, R.layout.activity_search);
-        initSearch();
+//        mSearchViewModel = DataBindingUtil.setContentView(this, R.layout.activity_search);
+//        initSearch();
     }
 
     private void initSearch() {
-        RxTextView.textChanges(mSearchViewModel.etKeyword)
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .debounce(300, TimeUnit.MILLISECONDS)
-                .filter(keyword -> keyword.length() > 0)
-                .switchMap(charSequence -> {
-                    System.out.println("=== " + charSequence);
-                    return App.getApplication(SearchActivity.this).getGithubService().publicRepositories(charSequence.toString());
-                })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        githubUser -> {
-                            System.out.println("=== updateUI");
-                            updateUI();
-                        },
-                        throwable -> {
-                            throwable.printStackTrace();
-                            Toast.makeText(SearchActivity.this, "搜索失败，请重试", Toast.LENGTH_SHORT).show();
-
-                        }
-                );
+//        RxTextView.textChanges(mSearchViewModel.etKeyword)
+//                .subscribeOn(AndroidSchedulers.mainThread())
+//                .debounce(300, TimeUnit.MILLISECONDS)
+//                .filter(keyword -> keyword.length() > 0)
+//                .switchMap(charSequence -> {
+//                    System.out.println("=== " + charSequence);
+//                    return App.getApplication(SearchActivity.this).getGithubService().publicRepositories(charSequence.toString());
+//                })
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(
+//                        githubUser -> {
+//                            System.out.println("=== updateUI");
+//                            updateUI();
+//                        },
+//                        throwable -> {
+//                            throwable.printStackTrace();
+//                            Toast.makeText(SearchActivity.this, "搜索失败，请重试", Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                );
 //        .filter(new Func1<CharSequence, Boolean>() {
 //            @Override
 //            public Boolean call(CharSequence charSequence) {

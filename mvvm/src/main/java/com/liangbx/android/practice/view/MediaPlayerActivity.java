@@ -71,6 +71,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
         mMediaPlayer.setOnInfoListener(mMediaplayerEvent);
         mMediaPlayer.setOnSeekCompleteListener(mMediaplayerEvent);
         mMediaPlayer.setOnVideoSizeChangedListener(mMediaplayerEvent);
+
     }
 
     private void play(MediaPlayer mediaPlayer, String path) {

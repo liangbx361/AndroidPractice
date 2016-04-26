@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.liangbx.android.practice"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest
+    package="com.liangbx.android.practice"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.READ_LOGS"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
@@ -46,17 +47,17 @@
         <activity
             android:name=".view.SplashActivity"
             android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name=".view.SearchActivity">
         </activity>
         <activity android:name=".view.AutoTestActivity">
         </activity>
         <activity android:name=".view.RxActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".view.PagingListActivity">
 
