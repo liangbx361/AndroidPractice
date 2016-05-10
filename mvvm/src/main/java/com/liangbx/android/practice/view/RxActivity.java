@@ -191,7 +191,12 @@ public class RxActivity extends AppCompatActivity {
             @Override
             public void call(Object o) {
             }
-        }, Throwable::printStackTrace);
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                throwable.printStackTrace();
+            }
+        });
 
     }
 

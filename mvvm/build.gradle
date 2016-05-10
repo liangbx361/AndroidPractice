@@ -46,7 +46,8 @@ dependencies {
 
     //依赖库
     compile android.annotations
-    compile android.supportAppcompatV7
+    compile android.supportDesign
+    compile android.recyclerView
 
     compile libs.rxJava
     compile libs.rxAndroid
@@ -61,7 +62,7 @@ dependencies {
     //Android测试
     androidTestCompile test.espresso
     androidTestCompile test.espressoContrib
-    androidTestCompile test.espressoWeb
+//    androidTestCompile test.espressoWeb
     androidTestCompile test.espressoIdlingResource
     androidTestCompile test.testRunner
     androidTestCompile test.testRules
